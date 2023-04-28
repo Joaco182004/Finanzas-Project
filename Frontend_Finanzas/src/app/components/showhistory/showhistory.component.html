@@ -1,0 +1,91 @@
+<section>
+<h1 class="tracking-in-expand">Mostrar Corrida</h1>
+<button (click)="regresarAtras()"><ion-icon name="chevron-back-circle" class="icon"></ion-icon>Regresar al historial</button>
+<div class="info-cont">
+    <div class="pair-info">
+    <div class="info left">
+        <h4>Tipo de Moneda:</h4>
+        <h5>{{typeMoney}}</h5>
+    </div>
+    <div class="info ">
+        <h4>Precio del Inmueble:</h4>
+        <h5>{{priceProperty}}</h5>
+    </div>
+    </div>
+    <div class="pair-info">
+    <div class="info left">
+        <h4>Cuota Inicial:</h4>
+        <h5>{{firstFee}}</h5>
+    </div>
+    <div class="info">
+        <h4>Precio a financiar:</h4>
+        <h5>{{amountFinance}}</h5>
+    </div>
+    </div>
+    <div class="pair-info">
+    <div class="info left">
+        <h4>Primera Tasa:</h4>
+        <h5>{{rate}}% {{nameRate}}</h5>
+    </div>
+    <div class="info">
+        <h4>Tasa a convertir:</h4>
+        <h5>{{newRate.toFixed(5)}}% {{nameConvertRate}}</h5>
+    </div>
+    </div>
+    <div class="pair-info">
+    <div class="info left">
+        <h4>Frecuencia de Pago:</h4>
+        <h5>{{frecuencyPay}}</h5>
+    </div>
+    <div class="info">
+        <h4>Frecuencia de Pago:</h4>
+        <h5>{{frecuencyPay}}</h5>
+    </div>
+    </div>
+    <div class="pair-info">
+    <div class="info left">
+        <h4>Número de Periodos:</h4>
+        <h5>{{numberPeriods}}</h5>
+    </div>
+    <div class="info left">
+        <h4>Número de Años:</h4>
+        <h5>{{numberYear}}</h5>
+    </div>
+    </div>
+</div>
+<div class="corrida">
+    <div class="encabezado">
+        <div><h4>N°</h4></div><div><h4>{{this.nameConvertRate}} </h4></div><div><h4>Plazo Gracia</h4></div><div><h4>Saldo Inicial</h4></div><div><h4>Interes</h4></div><div><h4>Cuota</h4></div> <div><h4>Amortizacion</h4></div><div><h4>Saldo Final</h4></div>         
+    </div>
+    <div *ngFor="let periodo of saldos_iniciales; let i=index">
+        <div class="periodo" *ngIf="i<numberPeriods">
+            <div>
+                <h5>{{i+1}}</h5>
+            </div>
+            <div>
+               <h5>{{tasa<=1 ? (tasa*100).toFixed(7):tasa.toFixed(7)}}%</h5>
+            </div>
+            <div>
+                <h5>{{plazo_gracia}}</h5>
+            </div>
+            <div>
+                <h5>{{simbolo}} {{saldos_iniciales[i]}}</h5>
+            </div>
+            <div>
+                <h5>({{simbolo}} {{intereses[i]}})</h5>
+            </div>
+            <div>
+                <h5>({{simbolo}} {{cuota}})</h5>
+            </div>
+            <div>
+                <h5>({{simbolo}} {{amortizaciones[i]}})</h5>
+            </div>
+            <div>
+                <h5>{{simbolo}} {{saldos_iniciales[i+1]}}</h5>
+            </div>
+                
+        </div>
+
+    </div>
+</div>
+</section>
